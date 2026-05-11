@@ -1,0 +1,555 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Raleway", sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: bisque;
+    min-height: 100vh;
+    justify-content: center;
+    gap: 20px;
+}
+
+.container {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+}
+
+.clock {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #7B4019;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid burlywood;
+    box-shadow: 0 0 12px #7B4019;
+    z-index: -1;
+}
+
+.clock span {
+    position: absolute;
+    transform: rotate(calc(var(--i) * 30deg));
+    inset: 20px;
+    text-align: center;
+}
+
+.clock span p {
+    font-size: 45px;
+    color: beige;
+    text-shadow: 2px 2px 2px beige;
+    transform: rotate(calc(var(--i) * -30deg));
+}
+
+.clock::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    z-index: 2;
+    background: radial-gradient(beige, #d2b48c);
+    border: 1px solid #7B4019;
+}
+
+.hand i {
+    position: absolute;
+    width: 4px;
+    height:var(--h);
+    border-radius: 8px;
+}
+
+.hand.hours i {
+    background-color: beige;
+}
+
+.hand.minutes i {
+    background-color: beige;
+}
+
+.hand.seconds i {
+    background-color: red;
+}
+
+.hand {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.secondsBar {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    inset: 2px;
+}
+
+.secondsBar span {
+    position: absolute;
+    transform: rotate(calc(var(--i) * 6deg));
+    text-align: center;
+    inset: 0px;
+}
+
+.secondsBar span p {
+    display: inline-block;
+    width: 2px;
+    height: 12px;
+    transform: translateY(5px);
+    background-color: beige;
+    box-shadow: 0 0 2px beige;
+}
+
+.secondsBar span:nth-child(5n) p {
+    width: 5px;
+    height: 18px;
+    transform: translateY(8px);
+}
+
+
+.toggler {
+    margin-top: 5rem;
+    padding: 2rem 4rem;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.hand.hours {
+  --h: 140px;
+}
+.hand.minutes {
+  --h: 150px;
+}
+.hand.seconds {
+  --h: 170px;
+}
+
+
+/* ////////////////////////////////// */
+
+
+.theme-wood {
+    background-color: #F3E9DC;
+}
+
+.theme-wood .clock {
+    background-color: #B08968;
+    border: 5px solid #8B5E3C;
+    box-shadow: 0 0 10px #8B5E3C;
+}
+
+.theme-wood .clock span p,
+.theme-wood .secondsBar span p {
+    color: #FFF8F0;
+    text-shadow: 1px 1px 1px #8B4513;
+}
+
+.theme-wood .hand.hours,
+.theme-wood .hand.minutes {
+    --clr: #603808;
+}
+
+.theme-wood .hand.seconds {
+    --clr: #A0522D;
+}
+
+.theme-wood .clock::before {
+    background-color: #FFF8F0;
+}
+
+.theme-wood .toggler {
+    color: #F3E9DC;
+    background-color: #603808;
+}
+
+.theme-glass .hand.hours i {
+    background-color: black;
+}
+
+.theme-glass .hand.minutes i {
+    background-color: black;
+}
+
+.theme-glass .hand.seconds i {
+    background-color: peru;
+}
+
+
+/* Neon Theme */
+
+.theme-neon {
+    background-color: #121212;
+}
+
+.theme-neon .clock {
+    background-color: #1F1F1F;
+    border: 5px solid #00FFEA;
+    box-shadow: 0 0 20px #00FFEA;
+}
+
+.theme-neon .clock span p,
+.theme-neon .secondsBar span p {
+    color: #00FFEA;
+    text-shadow: 0 0 5px #00FFEA;
+}
+
+.theme-neon .hand.hours {
+    --clr: #F0F;
+}
+
+.theme-neon .hand.minutes {
+    --clr: #0FF;
+}
+
+.theme-neon .hand.seconds {
+    --clr: #F00;
+}
+
+.theme-neon .clock::before {
+    background-color: #00FFEA;
+}
+
+.theme-neon .toggler {
+    background-color: #00FFEA;
+    color: #1F1F1F;
+    text-shadow: 0 0 12px #1F1F1F;
+}
+
+.theme-neon .secondsBar span p {
+    background-color: #00FFEA;
+    box-shadow: 0 0 12px #00FFEA;
+}
+
+.theme-neon .hand.hours i {
+    background-color: #00FFEA;
+}
+
+.theme-neon .hand.minutes i {
+    background-color: #00FFEA;
+}
+
+.theme-neon .hand.seconds i {
+    background-color: #fff;
+}
+
+/* Galaxy Theme */
+
+.theme-galaxy {
+    background: radial-gradient(circle at center, #0f0c29, #302b63, #24243e);
+}
+
+.theme-galaxy .clock {
+    background-color: #1a1a2e;
+    border: 5px solid #6c63ff;
+    box-shadow: 0 0 20px #6c63ff, 0 0 40px #8c52ff inset;
+}
+
+.theme-galaxy .clock span p,
+.theme-galaxy .secondsBar span p {
+    color: #8c9eff;
+    text-shadow: 0 0 4px #ffffff;
+}
+
+.theme-galaxy .hand.hours {
+    --clr: #00c3ff;
+}
+
+.theme-galaxy .hand.minutes {
+    --clr: #b967ff;
+}
+
+.theme-galaxy .hand.seconds {
+    --clr: #ff61a6;
+}
+
+.theme-galaxy .clock::before {
+    background-color: #8c52ff;
+    box-shadow: 0 0 8px #6c63ff;
+}
+
+.theme-galaxy .toggler {
+    background-color: #6c63ff;
+    color: #fff;
+    text-shadow: 0 0 10px #fff;
+}
+
+.theme-galaxy .secondsBar span p {
+    background-color: #8c9eff;
+    box-shadow: 0 0 12px #8c9eff;
+}
+
+.theme-galaxy .hand.hours i,
+.theme-galaxy .hand.minutes i,
+.theme-galaxy .hand.seconds i {
+    background-color: var(--clr);
+}
+
+
+/* Monochrome Theme */
+.theme-mono {
+    background-color: #000;
+}
+
+.theme-mono .clock {
+    background-color: #111;
+    border: 5px solid #fff;
+    box-shadow: 0 0 10px #fff;
+}
+
+.theme-mono .clock span p,
+.theme-mono .secondsBar span p {
+    color: #fff;
+    text-shadow: 0 0 2px #999;
+}
+
+.theme-mono .hand.hours {
+    --clr: #ccc;
+}
+
+.theme-mono .hand.minutes {
+    --clr: #aaa;
+}
+
+.theme-mono .hand.seconds {
+    --clr: #fff;
+}
+
+.theme-mono .clock::before {
+    background-color: #fff;
+    box-shadow: 0 0 4px #aaa;
+}
+
+.theme-mono .toggler {
+    background-color: #fff;
+    color: #000;
+    text-shadow: none;
+}
+
+.theme-mono .secondsBar span p {
+    background-color: #ccc;
+    box-shadow: 0 0 5px #fff;
+}
+
+.theme-mono .hand.hours i,
+.theme-mono .hand.minutes i,
+.theme-mono .hand.seconds i {
+    background-color: var(--clr);
+}
+
+/* Pastel Theme*/
+.theme-pastel {
+    background: linear-gradient(135deg, #ffe3e3, #ffd6e0, #fcd4dd);
+}
+
+.theme-pastel .clock {
+    background: linear-gradient(135deg, #ffedf0, #ffc6d1);
+    border: 5px solid #f8c8dc;
+    box-shadow: 0 0 20px #f5b2c2;
+}
+
+.theme-pastel .clock span p,
+.theme-pastel .secondsBar span p {
+    color: #d36c6c;
+    text-shadow: 1px 1px 2px #fff;
+}
+
+.theme-pastel .hand.hours {
+    --clr: #e89ca9;
+}
+
+.theme-pastel .hand.minutes {
+    --clr: #f8a5c2;
+}
+
+.theme-pastel .hand.seconds {
+    --clr: #ff85a2;
+}
+
+.theme-pastel .clock::before {
+    background: radial-gradient(#ffffff, #ffd6e0);
+    box-shadow: 0 0 6px #f8a5c2;
+}
+
+.theme-pastel .toggler {
+    background: linear-gradient(to right, #f8c8dc, #ffc6d1);
+    color: #fff;
+    text-shadow: 0 0 4px #d36c6c;
+    border: none;
+}
+
+.theme-pastel .secondsBar span p {
+    background-color: #ffb6c1;
+    box-shadow: 0 0 8px #ffb6c1;
+}
+
+.theme-pastel .hand.hours i,
+.theme-pastel .hand.minutes i,
+.theme-pastel .hand.seconds i {
+    background-color: var(--clr);
+}
+
+
+/* Glass Theme */
+.theme-glass {
+    background: linear-gradient(145deg, #e0e0e0, #ffffff);
+}
+
+.theme-glass .clock {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+}
+
+.theme-glass .clock span p,
+.theme-glass .secondsBar span p {
+    color: #333;
+    text-shadow: 0 0 2px #fff;
+}
+
+.theme-glass .hand.hours {
+    --clr: rgba(85, 85, 85, 0.6);
+}
+
+.theme-glass .hand.minutes {
+    --clr: rgba(85, 85, 85, 0.8);
+}
+
+.theme-glass .hand.seconds {
+    --clr: #ff4c93;
+}
+
+.theme-glass .clock::before {
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+.theme-glass .toggler {
+    background-color: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+    color: #222;
+    border: none;
+}
+
+.theme-glass .secondsBar span p {
+    background-color: rgba(100, 100, 100, 0.5);
+    box-shadow: 0 0 2px rgba(100, 100, 100, 0.6);
+}
+
+.theme-glass .hand.hours i,
+.theme-glass .hand.minutes i,
+.theme-glass .hand.seconds i {
+    background-color: var(--clr);
+}
+
+
+@media (max-width: 768px) {
+  .container {
+    width: 320px;
+    height: 320px;
+  }
+
+  .clock span p {
+    font-size: 28px;
+  }
+
+  .clock::before {
+    width: 12px;
+    height: 12px;
+  }
+
+  .hand i {
+    width: 3px;
+  }
+
+  .toggler {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+    width: 80%;
+  }
+
+  .secondsBar span:nth-child(5n) p {
+    width: 2px;
+    height: 12px;
+    transform: translateY(8px);
+   }
+
+    .hand.hours {
+    --h: 80px;
+  }
+
+  .hand.minutes {
+    --h: 90px;
+  }
+
+  .hand.seconds {
+    --h: 110px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 240px;
+    height: 240px;
+  }
+
+  .clock span p {
+    font-size: 18px;
+  }
+
+  .clock::before {
+    width: 10px;
+    height: 10px;
+  }
+
+  .hand i {
+    width: 2px;
+  }
+
+  .toggler {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+    width: 80%;
+  }
+
+  .secondsBar span p {
+    width: 1px;
+    height: 8px
+  }
+
+  .secondsBar span:nth-child(5n) p {
+    width: 2px;
+    height: 12px;
+    transform: translateY(5px);
+   }
+
+   .hand.hours {
+    --h: 60px;
+  }
+
+  .hand.minutes {
+    --h: 70px;
+  }
+
+  .hand.seconds {
+    --h: 80px;
+  }
+}
